@@ -6,10 +6,10 @@ COPY ./nginx.conf /etc/nginx/nginx.conf
 
 COPY ./index.html /usr/share/nginx/html/index.html
 
-COPY ./mime.types /etc/nginx/mime.types
+COPY mime.types /etc/nginx/mime.types
 
 RUN mkdir -p /var/log/nginx
 
-EXPOSE 8081
+EXPOSE 8082
 
 CMD ["nginx", "-g", "daemon off;"]
