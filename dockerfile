@@ -1,11 +1,15 @@
-FROM python:3.11
+FROM nginx:1.26.0
 
-WORKDIR /app
+WORKDIR /etc/nginx
 
-COPY . /app
+COPY ./nginx.conf /etc/nginx/nginx.conf
 
-RUN pip3 install flask
+COPY ./index.html /usr/share/nginx/html/index.html
 
-EXPOSE 5002
+COPY mime.types /etc/nginx/mime.types
 
-CMD ["flask", "run", "--host=0.0.0.0", "--port=5002"]
+RUN mkdir -p /var/log/nginx
+
+EXPOSE 8080
+
+CMD ["nginx", "-g", "daemon off;"]
