@@ -1,0 +1,5 @@
+FROM public.ecr.aws/aws-observability/aws-for-fluent-bit:2.32.2.20241008
+WORKDIR /fluent-bit/etc
+COPY ./fluent-bit.conf /fluent-bit/etc/fluent-bit.conf
+COPY ./fluent-bit-parsers.conf /fluent-bit/etc/fluent-bit-parsers.conf
+CMD ["/fluent-bit/bin/fluent-bit", "-c", "/fluent-bit/etc/fluent-bit.conf"]
